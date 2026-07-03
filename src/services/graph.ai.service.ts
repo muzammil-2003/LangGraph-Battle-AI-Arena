@@ -34,8 +34,8 @@ const State = new StateSchema({
 
 const solutionNode: GraphNode<typeof State> = async (state) => {
     const [mistral_solution, cohere_solution] = await Promise.all([
-        mistralModel.invoke(state.messages[0].text),
-        cohereModel.invoke(state.messages[0].text)
+        mistralModel.invoke(state.messages[0]?.text || ""),
+        cohereModel.invoke(state.messages[0]?.text || "")
     ])
     return {
         solution_1: mistral_solution.text,
@@ -44,7 +44,6 @@ const solutionNode: GraphNode<typeof State> = async (state) => {
 }
 
 const judgeNode: GraphNode<typeof State> = async (state) => {
-    console.log("Invoking judge node with state: ", state)
     const { solution_1, solution_2 } = state;
     const judge = createAgent({
         model: geminiModel,
