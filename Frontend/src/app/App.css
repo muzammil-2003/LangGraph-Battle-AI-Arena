@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #0f131f;
+  --color-surface-dim: #0f131f;
+  --color-surface-bright: #353946;
+  --color-surface-container-lowest: #0a0e1a;
+  --color-surface-container-low: #171b28;
+  --color-surface-container: #1b1f2c;
+  --color-surface-container-high: #262a37;
+  --color-surface-container-highest: #313442;
+  --color-on-surface: #dfe2f3;
+  --color-on-surface-variant: #ccc3d8;
+  --color-outline: #958da1;
+  --color-outline-variant: #4a4455;
+  --color-primary: #d2bbff;
+  --color-primary-container: #7c3aed;
+  --color-on-primary: #3f008e;
+  --color-on-primary-container: #ede0ff;
+  --color-inverse-primary: #732ee4;
+  --color-secondary: #adc6ff;
+  --color-secondary-container: #0566d9;
+  --color-on-secondary-container: #e6ecff;
+  --color-tertiary: #f9bd22;
+  --color-tertiary-container: #836100;
+  --color-on-tertiary: #402d00;
+  --color-on-tertiary-container: #ffe2ab;
+  --color-error: #ffb4ab;
+  --color-background: #0f131f;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap');
+@import 'highlight.js/styles/github-dark.css';
+
+/* Custom utilities */
+@utility glass-panel {
+  background: rgba(38, 42, 55, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Material symbols */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Custom scrollbar for container elements */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+/* Code blocks in markdown styling */
+.prose pre {
+  background: rgba(0,0,0,0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0.75rem 0;
+}
+.prose code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  background: rgba(0,0,0,0.3);
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  color: #d2bbff;
+}
+.prose pre code {
+  background: transparent;
+  padding: 0;
+  color: #ccc3d8;
+}
+.prose p { margin: 0.5rem 0; color: #ccc3d8; line-height: 1.6; }
+.prose h3 { color: #d2bbff; margin: 0.75rem 0 0.25rem; font-size: 14px; font-weight: 600; }
+.prose ul, .prose ol { padding-left: 1.25rem; margin: 0.5rem 0; color: #ccc3d8; }
+.prose li { margin: 0.25rem 0; }
+.prose strong { color: #dfe2f3; }
+
+/* Loading dots animation */
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+.loading-dot {
+  animation: bounce 1.4s infinite ease-in-out;
+}
+
+/* Pulse animation for live indicator */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
