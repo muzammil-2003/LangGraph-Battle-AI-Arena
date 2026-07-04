@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 
 export default function ChatInput({ onSend, isLoading }) {
   const inputRef = useRef(null);

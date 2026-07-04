@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import 'highlight.js/styles/github-dark.css';
 import './App.css';
 import Sidebar from './components/Sidebar';
 import BattleField from './components/BattleField';
@@ -31,14 +32,14 @@ function EmptyState() {
 
       <div>
         <h2 className="font-sans font-extrabold text-2xl text-on-surface mb-2">Welcome to Battle AI Arena</h2>
-        <p className="font-sans text-sm text-on-surface-variant max-w-[400px] leading-relaxed">
+        <p className="font-sans text-sm text-on-surface-variant max-w-100 leading-relaxed">
           Ask any coding question and watch two AI agents battle it out.
           A judge will evaluate their solutions and declare a winner.
         </p>
       </div>
 
       {/* Example prompts */}
-      <div className="flex flex-wrap gap-2 justify-center max-w-[500px]">
+      <div className="flex flex-wrap gap-2 justify-center max-w-125">
         {[
           'Write a factorial code in JS',
           'Implement binary search in Python',
@@ -118,19 +119,19 @@ export default function App() {
       <Sidebar />
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col h-screen relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-surface-container-high/50 to-surface-container-lowest">
+      <main className="flex-1 flex flex-col h-screen relative overflow-hidden bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-surface-container-high/50 to-surface-container-lowest">
         {/* Header */}
         <SessionHeader sessionId={sessionId} />
 
         {/* Scrollable Battle Area */}
         <div
           ref={scrollAreaRef}
-          className={`flex-grow overflow-y-auto ${hasConversations ? 'p-8 pb-28' : 'p-0'}`}
+          className={`grow overflow-y-auto ${hasConversations ? 'p-8 pb-28' : 'p-0'}`}
         >
           {!hasConversations ? (
             <EmptyState />
           ) : (
-            <div className="max-w-[1100px] mx-auto flex flex-col gap-8">
+            <div className="max-w-275 mx-auto flex flex-col gap-8">
               {conversations.map((conv, i) => (
                 <div key={i} className="flex flex-col gap-6">
                   {/* User Message */}
@@ -186,7 +187,7 @@ export default function App() {
 
                   {/* Divider between conversations */}
                   {i < conversations.length - 1 && (
-                    <div className="h-[1px] bg-white/5 my-2" />
+                    <div className="h-px bg-white/5 my-2" />
                   )}
                 </div>
               ))}

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const navItems = [
   { icon: 'add_box', label: 'New Battle', active: true },
   { icon: 'history', label: 'History' },
