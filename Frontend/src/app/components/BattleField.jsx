@@ -17,7 +17,7 @@ function AgentCard({ agentNumber, solution, color = 'purple' }) {
       onMouseLeave={() => setHovered(false)}
     >
       {/* Internal glow */}
-      <div className={`absolute -top-20 -left-20 w-40 h-40 blur-[40px] rounded-full pointer-events-none transition-opacity duration-300 ${
+      <div className={`absolute -top-20 -left-20 w-40 h-40 blur-2xl rounded-full pointer-events-none transition-opacity duration-300 ${
         isPurple ? 'bg-primary/15' : 'bg-secondary-container/15'
       } ${hovered ? 'opacity-100' : 'opacity-50'}`} />
 
@@ -37,7 +37,7 @@ function AgentCard({ agentNumber, solution, color = 'purple' }) {
       </div>
 
       {/* Solution Content */}
-      <div className="bg-black/40 rounded-lg p-4 border border-white/5 flex-grow overflow-y-auto relative z-1 max-h-[320px]">
+      <div className="bg-black/40 rounded-lg p-4 border border-white/5 grow overflow-y-auto relative z-1 max-h-80">
         <div className="prose text-[13px]">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {solution}
@@ -75,7 +75,7 @@ function ScoreBar({ label, score, maxScore = 10, color, isWinner }) {
       <div className="h-2 bg-surface-container-highest rounded-full overflow-hidden">
         <div className={`progress-fill h-full rounded-full transition-all duration-1000 ${
           isWinner
-            ? 'bg-gradient-to-r from-primary to-tertiary opacity-100'
+            ? 'bg-linear-to-r from-primary to-tertiary opacity-100'
             : `${color === 'purple' ? 'bg-primary' : 'bg-secondary-container'} opacity-80`
         }`} style={{
           width: `${width}%`,
@@ -92,7 +92,7 @@ function JudgeVerdictCard({ solution1Score, solution2Score }) {
   return (
     <div className="glass-panel rounded-xl p-8 relative overflow-hidden">
       {/* Gold gradient background glow */}
-      <div className="absolute inset-0 bg-gradient-to-b from-tertiary/5 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-b from-tertiary/5 to-transparent pointer-events-none" />
 
       {/* Header */}
       <div className="flex items-center justify-between mb-8 relative z-1">
@@ -138,9 +138,9 @@ export default function BattleField({ solution1, solution2, judgeRecommendation 
     <div className="flex flex-col gap-6">
       {/* Section header */}
       <div className="flex items-center gap-3">
-        <div className="flex-grow h-[1px] bg-white/5" />
+        <div className="grow h-px bg-white/5" />
         <span className="font-sans font-semibold text-[11px] tracking-widest uppercase text-on-surface-variant py-1 px-3">⚔ Battlefield</span>
-        <div className="flex-grow h-[1px] bg-white/5" />
+        <div className="grow h-px bg-white/5" />
       </div>
 
       {/* Agent Cards side by side */}
