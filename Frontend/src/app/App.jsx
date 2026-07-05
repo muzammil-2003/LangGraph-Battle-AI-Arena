@@ -83,7 +83,7 @@ export default function App() {
     }]);
 
     try {
-      const result = await axios.post('http://localhost:3000/use-graph', {input: message});
+      const result = await axios.post('https://langgraph-battle-ai-arena-hgz7.onrender.com/use-graph', {input: message});
       console.log('API Response:', result.data.result);
       setConversations(prev => {
         const updated = [...prev];
