@@ -3,7 +3,7 @@ import { useRef } from 'react';
 export default function ChatInput({ onSend, isLoading }) {
   const inputRef = useRef(null);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     const value = inputRef.current?.value.trim();
     if (value && !isLoading) {
       onSend(value);

@@ -4,7 +4,6 @@ import remarkGfm from 'remark-gfm';
 
 function AgentCard({ agentNumber, solution, color = 'purple' }) {
   const isPurple = color === 'purple';
-  const badgeText = isPurple ? 'Advanced' : 'Standard';
 
   const [hovered, setHovered] = useState(false);
 
@@ -29,11 +28,6 @@ function AgentCard({ agentNumber, solution, color = 'purple' }) {
           </span>
           <h3 className="font-sans font-semibold text-lg text-on-surface">AI Agent {agentNumber}</h3>
         </div>
-        <span className={`font-sans font-semibold text-[10px] tracking-wider uppercase py-1 px-2 rounded border ${
-          isPurple
-            ? 'text-primary bg-primary/10 border-primary/20'
-            : 'text-secondary-container bg-secondary-container/10 border-secondary-container/20'
-        }`}>{badgeText}</span>
       </div>
 
       {/* Solution Content */}

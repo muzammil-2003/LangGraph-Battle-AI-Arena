@@ -4,7 +4,7 @@ import './App.css';
 import Sidebar from './components/Sidebar';
 import BattleField from './components/BattleField';
 import ChatInput from './components/ChatInput';
-import { sendMessage } from './services/api';
+import axios from 'axios';
 
 function SessionHeader({ sessionId }) {
   return (
@@ -83,14 +83,15 @@ export default function App() {
     }]);
 
     try {
-      const result = await sendMessage(message);
+      const result = await axios.post('http://localhost:3000/use-graph', {input: message});
+      console.log('API Response:', result.data.result);
       setConversations(prev => {
         const updated = [...prev];
         updated[updated.length - 1] = {
           userMessage: message,
-          solution1: result.solution_1,
-          solution2: result.solution_2,
-          judgeRecommendation: result.judge_recommendation,
+          solution1: result.data.result.solution_1,
+          solution2: result.data.result.solution_2,
+          judgeRecommendation: result.data.result.judge_recommendation,
           loading: false,
         };
         return updated;
